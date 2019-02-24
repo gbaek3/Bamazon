@@ -3,7 +3,12 @@ $(function () {
     let itemsInCart = [];
 
     const render = function (movieList) {
+        clearDiv();
         $('#movielist').empty();
+        $('#cartlist').empty();
+        $('.totalcost').empty();
+        totalCost = 0;
+        itemsInCart = [];
 
         for (let i = 0; i < movieList.length; i++) {
             $('#movielist').append(`<tr><td><input class = "inputbox qty${movieList[i].id}" ></td><td>${movieList[i].product_name}</td><td>${movieList[i].stock_quantity}</td><td>$${movieList[i].price}</td><td><button class = "btn btn-success" data-id=${movieList[i].id}">Add to Cart</button></td></tr>`);
