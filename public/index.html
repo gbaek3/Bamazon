@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Bamazon</title>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"
+        integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/style.css">
+
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"></script>
+    <script src="/js/app.js"></script>
+
+</head>
+
+<body>
+    <nav class="navbar navbar-default">
+        <ul>
+            <li> <a class="navbar brand" href="/"> Home </a></li>
+            <li> <a class="nav link" href="/"> Manager View </a></li>
+        </ul>
+
+        <button type="button" class="btn btn-info btn-primary" data-toggle="modal" data-target="#viewcart">View
+            Cart</button>
+    </nav>
+
+    <!-- Modal -->
+    <div id="response"></div>
+
+    <div class="modal fade" id="viewcart" role="dialog">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Your Cart</h4>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <table class="table">
+                        <thead class="thead-light">
+                            <tr>
+                                <th>Qty</th>
+                                <th>Movie</th>
+                                <th>Cost</th>
+                                <th>Total</th>
+                            </tr>
+                        </thead>
+                        <tbody id="cartlist">
+                        </tbody>
+                        <tbody>
+                            <tr>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td class="totalcost"></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <button type="button" id="checkout" class="btn btn-default" data-toggle="modal" data-dismiss="modal"
+                        data-target="#check-out">Checkout</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="check-out" role="dialog">
+        <div class="modal-dialog modal-sm">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h6 class="modal-title">Thank you for your purchase.</h6>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <p>Your total was: <span id="finaltotal"></span>
+                    </p>
+                </div>
+                <div class="modal-footer">
+                    <button id="finalcheckout" type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <table class="table" id="maincontent">
+        <thead class="thead-light">
+            <tr>
+                <th>QTY</th>
+                <th>Movie Name</th>
+                <th>Stock</th>
+                <th>Price</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody id="movielist">
+        </tbody>
+    </table>
+
+</body>
+
+</html>

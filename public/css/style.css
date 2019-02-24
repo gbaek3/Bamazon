@@ -1,0 +1,14 @@
+#maincontent,
+#response{
+    width:70%;
+    margin: 0 auto;
+}
+
+.inputbox{
+    width:50px;
+}
+
+ul {
+    list-style-type: none;
+    padding:0;
+  }
