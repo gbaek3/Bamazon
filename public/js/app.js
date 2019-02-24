@@ -48,7 +48,7 @@ $(function () {
     const updateCart = function (product) {
         const numOrdered = $(`.qty${product.id}`).val();
 
-        if ((numOrdered != "") && (numOrdered < product.stock_quantity)) {
+        if ((numOrdered != "") && (numOrdered <= product.stock_quantity)) {
             updateCartModal(numOrdered, product);
             $('#response').text("Your cart has been updated");
             $(`.qty${product.id}`).val('');
