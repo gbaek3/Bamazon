@@ -35,4 +35,12 @@ module.exports = function (app) {
             });
     });
 
+    app.post('/api/products', function (req, res) {
+        db.Product.create(req.body).then(function (products) {
+            res.json(products);
+        }).catch(function (error) {
+            res.json({ error: error });
+        });
+    });
+
 };

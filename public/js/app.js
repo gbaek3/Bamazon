@@ -142,7 +142,28 @@ $(function () {
         $('.addId').val('');
         $('#productlist').val('');
     };
+    const showNewProduct = function () {
+        $('section').hide();
+        $('#addnewproduct').show();
+    }
 
+    const captureInputs = function () {
+        const newProduct = {
+            product_name: $('.inputmovie').val().trim(),
+            department_name: $('.inputgenre').val().trim(),
+            price: $('.inputprice').val().trim(),
+            stock_quantity: $('.inputamount').val().trim()
+        };
+
+        $.post('/api/products', newProduct)
+            .then(function (data) {
+                alert("New product added to Bamazon!")
+                $('.inputmovie').val('');
+                $('.inputgenre').val('');
+                $('.inputprice').val('');
+                $('.inputamount').val('');
+            });
+    };
 
     //home listeners//
     $('#movielist').on('click', '.btn-success', addToCart);
@@ -154,5 +175,6 @@ $(function () {
     $('#viewlow').on('click', showLowInventory);
     $('#refillstock').on('click', getInventoryList);
     $('#addtostock').on('click', '.btn-warning', addtoInventory);
-
+    $('#addnew').on('click', showNewProduct);
+    $('#addnewbtn').on('click', '.btn-danger', captureInputs);
 });

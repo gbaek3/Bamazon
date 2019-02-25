@@ -24,7 +24,9 @@
             <li> <a class="navbar brand" href="/"> Bamazon </a></li>
             <li> <a class="nav link" id="mgrlink" href="/managerpage"> Manager View </a></li>
         </ul>
+
     </nav>
+    <h1>Bamazon Manager</h1>
 
     <div class="btn-group">
         <button type="button" class="btn btn-info">Manager Tasks</button>
@@ -39,7 +41,6 @@
             <a class="dropdown-item" id="addnew" href="#">Add New Product</a>
         </div>
     </div>
-
     <section id="inventorypage">
         <h3>Current Inventory</h3>
         <table class="table" id="maincontent">
@@ -107,6 +108,32 @@
                     <th id="addtostock">
                         <button class="btn btn-warning">Add to Stock</button>
                     </th>
+                </tr>
+            </thead>
+        </table>
+    </section>
+
+    <section id="addnewproduct">
+        <h3>Add New Product</h3>
+        <table class="table" id="maincontent">
+            <thead class="thead-light">
+                <tr>
+                    <th>Movie Name</th>
+                    <th>Genre</th>
+                    <th>Amount</th>
+                    <th>Price</th>
+                </tr>
+                <tr>
+                    <th><input class="inputmovie"></th>
+                    <th><input class="inputgenre"></th>
+                    <th><input class="inputamount"></th>
+                    <th><input class="inputprice" placeholder="$"></th>
+                </tr>
+                <tr>
+                    <th id="addnewbtn"><button class="btn btn-danger">Add product!</button></th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
                 </tr>
             </thead>
         </table>
