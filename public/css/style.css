@@ -1,14 +1,24 @@
 #maincontent,
+section,
 #response{
     width:70%;
     margin: 0 auto;
 }
-
+h3{
+    text-align:center;
+}
 .inputbox{
     width:50px;
+}
+.inputbox2{
+    width:100px;
 }
 
 ul {
     list-style-type: none;
     padding:0;
+  }
+
+  .btn-group{
+      margin-left:10px;
   }

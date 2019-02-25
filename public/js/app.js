@@ -18,7 +18,6 @@ $(function () {
     const getProducts = function () {
         $.get('/api/products')
             .then(function (data) {
-                // console.log(data);
                 render(data);
             });
     };
@@ -72,8 +71,88 @@ $(function () {
 
     getProducts();
 
+    //mgr view//
+    $('section').hide();
+    const renderInv = function (movieList) {
+        $('section').hide();
+        $('#inventorypage').show();
+        $('#movielistmgr').empty();
+
+        for (let i = 0; i < movieList.length; i++) {
+            $('#movielistmgr').append(`<tr><td>${movieList[i].id}</td><td>${movieList[i].product_name}</td><td>${movieList[i].stock_quantity}</td><td>$${movieList[i].price}</td></tr>`);
+        }
+    }
+
+    const showInventory = function () {
+        $.get('/api/products')
+            .then(function (data) {
+                renderInv(data);
+            });
+    };
+
+    const renderLowInv = function (movieList) {
+        $('section').hide();
+        $('#lowinventory').show();
+        $('#movielistlow').empty();
+
+        for (let i = 0; i < movieList.length; i++) {
+            if (movieList[i].stock_quantity <= 5) {
+                $('#movielistlow').append(`<tr><td>${movieList[i].id}</td><td>${movieList[i].product_name}</td><td>${movieList[i].stock_quantity}</td><td>$${movieList[i].price}</td></tr>`);
+            }
+        };
+
+    };
+
+    const showLowInventory = function () {
+        $.get('/api/products')
+            .then(function (data) {
+                renderLowInv(data);
+            });
+    };
+
+    const getInventoryList = function () {
+        $('section').hide();
+        $.get('/api/products')
+            .then(function (data) {
+                for (let i = 0; i < data.length; i++) {
+                    $('#productlist').append(`<option value = "${data[i].id}"> ${data[i].product_name}</option>`);
+                }
+            });
+        $('#addtoinventory').show();
+    };
+    const addtoInventory = function () {
+        const id = $('#productlist').val();
+        const newStock = parseInt($('.addId').val());
+        console.log(newStock);
+        let newArray = [];
+        $.get(`/api/products/${id}`).then(function (data) {
+            newArray.push(data);
+            console.log(newArray);
+            newArray[0].stock_quantity += newStock;
+
+            newArray.forEach(function (data) {
+                $.ajax({
+                    method: 'PUT',
+                    url: `/api/products/${data.id}`,
+                    data: data
+                });
+            });
+        });
+        alert("Items succesfully added to inventory!")
+        $('.addId').val('');
+        $('#productlist').val('');
+    };
+
+
+    //home listeners//
     $('#movielist').on('click', '.btn-success', addToCart);
     $('#checkout').on('click', checkOut);
     $('#finalcheckout').on('click', getProducts);
+
+    //mgr listeners//
+    $('#viewitems').on('click', showInventory);
+    $('#viewlow').on('click', showLowInventory);
+    $('#refillstock').on('click', getInventoryList);
+    $('#addtostock').on('click', '.btn-warning', addtoInventory);
 
 });
